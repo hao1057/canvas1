@@ -1,48 +1,215 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 
 <head>
-
-    <meta charset="UTF-8">
-
-    <title>HTML5 Canvas粒子效果文字动画特效DEMO演示</title>
-
-    <link rel="stylesheet" href="css/normalize.css">
-
-    <link rel="stylesheet" href="css/style.css" media="screen" type="text/css" />
-
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>传递孝心，让爱延续</title>
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta content="telephone=no" name="format-detection">
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<meta name="keywords" content="重阳节" />
+<link rel="stylesheet" href="plugins/weui/css/weui.min.css">
+<link rel="stylesheet" href="plugins/weui/css/jquery-weui.min.css">
+<link href="css/web.css" rel="stylesheet" type="text/css">
+<link href="css/chong.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/jquery/jquery-2.x.min.js"></script>
 </head>
 
-<body>
-    <canvas class="canvas"></canvas>
-
-    <div class="ui">
-        <input class="ui-input" type="text" />
-        <span class="ui-return">↵</span>
+<body onload="init()">
+<div class="chong max_width">
+    <div class="chong-bg">
+        <img src="images/chong/bg.png">
     </div>
-
-    <div class="overlay">
-        <div class="tabs">
-<!--            <div class="tabs-labels"><span class="tabs-label">Commands</span><span class="tabs-label">Info</span><span class="tabs-label">Share</span></div>-->
-
-            <div class="tabs-panels">
-                <ul class="tabs-panel commands">
-<!--
-                    <li class="commands-item"><span class="commands-item-title">Text</span><span class="commands-item-info" data-demo="Hello :)">Type anything</span><span class="commands-item-action">Demo</span></li>
-                    <li class="commands-item"><span class="commands-item-title">Countdown</span><span class="commands-item-info" data-demo="#countdown 10">#countdown<span class="commands-item-mode">number</span></span><span class="commands-item-action">Demo</span></li>
-                    <li class="commands-item"><span class="commands-item-title">Time</span><span class="commands-item-info" data-demo="#time">#time</span><span class="commands-item-action">Demo</span></li>
-                    <li class="commands-item"><span class="commands-item-title">Rectangle</span><span class="commands-item-info" data-demo="#rectangle 30x15">#rectangle<span class="commands-item-mode">width x height</span></span><span class="commands-item-action">Demo</span></li>
-                    <li class="commands-item"><span class="commands-item-title">Circle</span><span class="commands-item-info" data-demo="#circle 25">#circle<span class="commands-item-mode">diameter</span></span><span class="commands-item-action">Demo</span></li>
-
-                    <li class="commands-item commands-item--gap"><span class="commands-item-title">Animate</span><span class="commands-item-info" data-demo="The time is|#time|#countdown 3|#icon thumbs-up"><span class="commands-item-mode">command1</span>&nbsp;|<span class="commands-item-mode">command2</span></span><span class="commands-item-action">Demo</span></li>
--->
-                </ul>
+    <div class="chong-block">
+        <div class="weui-flex chong-top">
+            <div class="weui-flex__item"><img src="images/chong/nx_logo.png"></div>
+            <div class="top-word" id="rule-show">活动规则</div>
+        </div>
+        <div class="chong-title">
+            <img src="images/chong/yun.png" id="yun">
+            <img src="images/chong/title.png" id="title">
+        </div>
+        <div class="chong-title-fu">
+            <img src="images/chong/title_fu.png">
+        </div>
+        <div class="weui-flex chong-card-btn chong-btn">
+            <div class="weui-flex__item">
+                <a href="javascript:;" class="card-btn" id="chong-btn">抽取卡片</a>
+            </div>
+            <div class="weui-flex__item">
+                <a href="my_card.html" class="card-btn">我的卡片</a>
+            </div>
+        </div>
+        <p>今日剩余次数:<span>3次</span></p>
+    </div>
+    <div class="chong-hua">
+        <img src="images/chong/huabang.png">
+    </div>
+</div>
+<script id="show_rules" type="text/html">
+    <div class="rule_close"><img src="images/chong/exit.png"></div>
+    <div class="rule-top">活动规则</div>
+    <div class="rule_pdiv max_width">
+        <div class="rule_div" id="rule_div">
+            <div class="clear height_10"></div>
+            <div class="rule_title">
+                <div class="rule_info"><strong>一、活动主题</strong></div>
+                <div class="rule_info_word">集齐6张孝心卡，赢取500元京东E卡！</div>
+                <div class="rule_info"><strong>二、活动时间</strong></div>
+                <div class="rule_info_word">2017.10.21-2017.10.30
+                </div>
+            </div>
+            <div class="rule_info"><strong>三、活动流程</strong></div>
+            <div class="rule_content">
+                <p><span class="rule_info_seq">1、</span>用户关注福建农信微信公众号即可参与；</p>
+                <p><span class="rule_info_seq">2、</span>进入游戏页面，抽取一张卡片，关注用户 每天有两次抽取卡片的机会，分享朋友圈 可增加一次机会；</p>
+                <p><span class="rule_info_seq">3、</span>抽到任意一张孝心卡，可通过链接或二维 码跳转到福e购商城购买相应产品，集齐6 张不同的孝心卡可获得500元京东E卡，集 齐5张可获得200元京东E卡，集齐4张可获得100元京东E卡；</p>
+                <p><span class="rule_info_seq">4、</span>孝心卡集齐后，可在10月29日至30日之间 进行兑换，每位用户只能兑换一次；</p>
+                <p><span class="rule_info_seq">5、</span>孝心卡可分享到朋友圈，邀请好友来玩， 让孝心传递下去。</p>
+            </div>
+            <div class="clear height_10"></div>
+            <div class="clear height_10"></div>
+            <div class="rule_return" onclick="layer.closeAll();">返回首页</div>
+            <div class="clear height_10"></div>
+            <div class="clear height_10"></div>
+        </div>
+    </div>
+</script>
+<script id="cardHtml" type="text/html">
+    <div class="card_pdiv max_width">
+        <div class="card_div max_width">
+            <div class="card_close"><img src="images/chong/exit.png"></div>
+            <div class="card_show">
+                <div class="card_bg">
+                    <img src="images/chong/tk_bg.png">
+                </div>
+                <div class="card_img"> <img src="images/chong/tk_#img_src#"></div>
+                <p>#mes#</p>
+                <a href="#a_href#"><img src="images/chong/tk_ljgm.png"></a>
+            </div>
+        </div>
+        <div class="weui-flex chong-card-btn">
+            <div class="weui-flex__item">
+                <a href="javascript:closeRule();" class="card-btn">确定</a>
+            </div>
+            <div class="weui-flex__item">
+                <a href="my_card.html" class="card-btn">我的卡片</a>
             </div>
         </div>
     </div>
+</script>
+<script id="plainHtml" type="text/html">
+    <div class="card_pdiv max_width">
+        <div class="card_div max_width">
+            <div class="card_close"><img src="images/chong/exit.png"></div>
+            <div class="card_show">
+                <div class="card_bg">
+                    <img src="images/chong/tk_bg.png">
+                </div>
+                <div class="card_img"> <img src="images/chong/tk_hyh.png"></div>
+                <p>#Pmes#<br/>百善孝为先，<br/>记得孝敬父母长辈哦。</p>
+                <a href="javascript:closeRule();" class="card-show-btn">确定</a>
+            </div>
+        </div>
+    </div>
+</script>
+<script>
+$(function(){
+    resetHeight();
+    $("#rule-show").click(rules);
+    $("#chong-btn").click(chongqu);
+});
+function chongqu(){
+    var wupin=parseInt(Math.random()*8);
+//    var wupin=7;
+    var mes=cardMes(wupin);
+    var href=cardHref(wupin);
+    var hide='javascript:;" style="display:none;';
+    switch(wupin){
+        case 0 :chongzhong("yaoyi.png",mes,href);break;
+        case 1 :chongzhong("baicha.png",mes,href);break;
+        case 2 :chongzhong('haishen.png" class="card-img',mes,href);break;
+        case 3 :chongzhong('zhusun.png" class="card-img',mes,href);break;
+        case 4 :chongzhong("bailian.png",mes,href);break;
+        case 5 :chongzhong('juhonggao.png" class="card-img',mes,href);break;
+        case 6 :chongzhong("hyh.png",mes,hide);break;
+        default:plaint(mes);break;
+    }
+}
+function cardMes(wupin){
+    switch(wupin){
+        case 0 :return "幸福就是坐在摇椅上，<br/>看着儿孙们嬉笑打闹；";break;
+        case 1 :return "泡一壶茶，<br/>听您讲那过去的故事；";break;
+        case 2 :return "不能让您年轻10岁，<br/>却能让您健康常驻；";break;
+        case 3 :return "您说晚年就是<br/>子孙满堂，阖家安康；";break;
+        case 4 :return "从前您为我操心，<br/>现在我让您舒心；";break;
+        case 5 :return "您越来越像个孩子，<br/>我也知道该怎么哄您开心；";break;
+        case 6 :return "很遗憾~<br/>百善孝为先，没抽中也要<br/>记得孝敬父母长辈哦。";break;
+        default:return "服务器繁忙~";break;
+    }
 
-    <script src="js/index.js"></script>
-
+}
+function cardHref(wupin){
+    switch(wupin){
+        case 0 :return "https://o2o.fjnx.com.cn/wx/wap/index.html#/GoodsDetail/201709221219110022240018/1485";break;
+        case 1 :return "https://o2o.fjnx.com.cn/wx/wap/index.html#/GoodsDetail/201708082123410022240008/1485";break;
+        case 2 :return "https://o2o.fjnx.com.cn/wx/wap/index.html#/GoodsDetail/201709232218330022240019/1485";break;
+        case 3 :return "https://o2o.fjnx.com.cn/wx/wap/index.html#/GoodsDetail/201709072116290022240009/1485";break;
+        case 4 :return "https://o2o.fjnx.com.cn/wx/wap/index.html#/GoodsDetail/201708082128240022240010/1485";break;
+        case 5 :return "https://o2o.fjnx.com.cn/wx/wap/index.html#/GoodsDetail/201708102028250022240006/1485";break;
+        default:return "";break;
+    }
+}
+function plaint(mes){
+    var plainHtml=$("#plainHtml").html();
+    plainHtml=plainHtml.replace("#Pmes#",mes);
+    layer.open({
+		  type: 1
+		  ,content: plainHtml
+		  ,shadeClose:true
+		  ,style: 'width:100%; min-width:220px;border: none; -webkit-animation-duration: .5s; animation-duration: .5s;overflow-y:auto;background:none;height:'+$(window).height()*0.7+'px;'
+		});
+     $(".card_close").click(closeRule);
+}
+function chongzhong(src,mes,href){
+    var cardHtml=$("#cardHtml").html();
+    cardHtml=cardHtml.replace("#img_src#",src);
+    cardHtml=cardHtml.replace("#mes#",mes);
+    cardHtml=cardHtml.replace("#a_href#",href);
+    layer.open({
+		  type: 1
+		  ,content: cardHtml
+		  ,shadeClose:true
+		  ,style: 'width:100%; min-width:220px;border: none; -webkit-animation-duration: .5s; animation-duration: .5s;overflow-y:auto;background:none;height:'+$(window).height()*0.8+'px;'
+		});
+    $(".card_close").click(closeRule);
+}
+function init(){
+    $("#title").addClass("bounceInDown");
+    $(".chong-title-fu img").addClass("falein");
+    $("#chong-btn").addClass("a-btn");
+    $("#yun").addClass("yun-piao");
+}
+function resetHeight(){
+    if ($(window).height() > $(document.body).height()) {                  
+        $(document.body).height($(window).height());  
+        $(document.body).css("background","#5b7629");  
+    }
+}
+function rules() {
+    layer.open({
+        type: 1,
+        content: $("#show_rules").html(),
+        shadeClose: true,
+        style: 'width:90%;max-width:500px; border: none; -webkit-animation-duration: .5s;border-radius:10px; animation-duration: .5s;overflow-y:auto;background:none;height:' + $(window).height() * 0.9 + 'px;'
+    });
+    $(".rule_close").click(closeRule);
+}
+function closeRule() { layer.closeAll();}
+</script>
+<script type="text/javascript" src="plugins/layer/layer.m.js"></script>
+<script type="text/javascript" src="plugins/weui/js/jquery-weui.min.js"></script>
 </body>
-
 </html>
